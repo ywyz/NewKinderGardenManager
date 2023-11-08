@@ -14,19 +14,19 @@
 #
 # ///////////////////////////////////////////////////////////////
 
-import sys
 import os
-import platform
+import sys
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
-from widgets import *
-os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
+
+os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
 widgets = None
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -71,6 +71,7 @@ class MainWindow(QMainWindow):
         widgets.btn_dailyAttend.clicked.connect(self.buttonClick)
         widgets.btn_food.clicked.connect(self.buttonClick)
         widgets.btn_exit.clicked.connect(self.buttonClick)
+
         widgets.btn_info.clicked.connect(self.buttonClick)
         widgets.btn_teach.clicked.connect(self.buttonClick)
         widgets.btn_things.clicked.connect(self.buttonClick)
@@ -78,12 +79,14 @@ class MainWindow(QMainWindow):
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
+
         widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
         widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         # EXTRA RIGHT BOX
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
+
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
 
         # SHOW APP
@@ -108,7 +111,6 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_account.setStyleSheet(UIFunctions.selectMenu(widgets.btn_account.styleSheet()))
 
-
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
     # ///////////////////////////////////////////////////////////////
@@ -131,16 +133,15 @@ class MainWindow(QMainWindow):
 
         # SHOW NEW PAGE
         if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
-            UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+            widgets.stackedWidget.setCurrentWidget(widgets.new_page)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
         if btnName == "btn_save":
             print("Save BTN clicked!")
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
-
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
@@ -159,6 +160,7 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
